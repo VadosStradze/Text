@@ -1,6 +1,7 @@
 package com.company.oop.bank;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Client {
@@ -47,5 +48,18 @@ public class Client {
 
     public void setAccountList(Set<Account> accountList) {
         this.accountList = accountList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(name, client.name) && Objects.equals(accountList, client.accountList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, accountList);
     }
 }

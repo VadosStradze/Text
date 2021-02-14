@@ -1,47 +1,45 @@
 package com.company.oop.text;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
-public class Sentence implements PartOfText{
-    private List<String> sentence;
+public class Sentence {
+    private List<Word> wordList;
+
+    public Sentence() {
+        this.wordList = new ArrayList<>();
+    }
+
+    public void add(Word word) {
+        wordList.add(word);
+    }
+
+    public List<Word> getWordList() {
+        return wordList;
+    }
+
+    public void setWordList(List<Word> wordList) {
+        this.wordList = wordList;
+    }
 
     @Override
     public String toString() {
         return "Sentence{" +
-                "sentence=" + sentence +
+                "wordList=" + wordList +
                 '}';
     }
 
-    public Sentence(){
-    sentence = new ArrayList<>();
-}
-public void add(Word word){
-    sentence.add(word.getWord());
-}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sentence sentence = (Sentence) o;
+        return Objects.equals(wordList, sentence.wordList);
+    }
 
     @Override
-    public List<String> print(Sentence sentence) {
-        List<String> result =  sentence.getSentence();
-        List<String> list= new ArrayList<>();
-        for (String str: result) {
-            list.add(str);
-        }
-        return list;
-    }
-
-    public  List<String> getWord(String sentence) {
-        String[] words = sentence.split(" ");
-        return Arrays.asList(words);
-    }
-
-
-    public List<String> getSentence() {
-        return sentence;
-    }
-
-    public void setSentence(List<String> sentence) {
-        this.sentence = sentence;
+    public int hashCode() {
+        return Objects.hash(wordList);
     }
 }

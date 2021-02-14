@@ -2,6 +2,7 @@ package com.company.oop.state;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class State {
     private String stateName;
@@ -52,5 +53,18 @@ public class State {
                 ", capitalName='" + capitalName + '\'' +
                 ", regionList=" + regionList +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        State state = (State) o;
+        return Objects.equals(stateName, state.stateName) && Objects.equals(capitalName, state.capitalName) && Objects.equals(regionList, state.regionList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(stateName, capitalName, regionList);
     }
 }

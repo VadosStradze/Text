@@ -1,33 +1,28 @@
 package com.company.oop.text;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class Test {
-    public static void main(String[]args)  {
-        File file = new File( "/home/vadim/test.txt" );
-        List<String> list = new ArrayList<>();
-        try ( Scanner scanner = new Scanner( file ) ) {
-            while ( scanner.hasNext() ) {
-                Word word = new Word();
-                Sentence sentence = new Sentence();
+    public static void main(String[] args) {
+        Word w0 = new Word("Hello");
+        Word w1 = new Word("Vados");
+        Word w2 = new Word("are");
+        Word w3 = new Word("u");
+        Word w4 = new Word("ok?");
 
-                String line = scanner.next();
-                word.setWord(line);
-                sentence.add(word);
-
-                list.add(word.getWord());
-                //System.out.println( list );
-                System.out.println(sentence);
-            }
-        } catch ( FileNotFoundException e ) {
-            e.printStackTrace();
-        }
-        System.out.println(list);
+        Sentence sentence = new Sentence();
+        sentence.add(w0);
+        sentence.add(w1);
+        sentence.add(w2);
+        sentence.add(w3);
+        sentence.add(w4);
 
 
+        Text text = new Text();
+        text.setHead("Vadosymba");
+        text.add(sentence);
+
+
+        Print print = new Print();
+        print.print(text);
     }
-}
 
+}

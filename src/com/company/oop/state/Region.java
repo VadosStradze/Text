@@ -2,6 +2,7 @@ package com.company.oop.state;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Region {
     private String regionName;
@@ -68,4 +69,18 @@ public class Region {
     public void setDistrictList(List<District> districtList) {
         this.districtList = districtList;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Region region = (Region) o;
+        return Objects.equals(regionName, region.regionName) && Objects.equals(regionalCenter, region.regionalCenter) && Objects.equals(regionSquare, region.regionSquare) && Objects.equals(districtList, region.districtList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(regionName, regionalCenter, regionSquare, districtList);
+    }
+
 }

@@ -41,4 +41,5 @@ public class StateLogic {
     return squareSum;
     }
 
+
 }

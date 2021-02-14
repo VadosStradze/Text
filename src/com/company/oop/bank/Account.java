@@ -1,5 +1,7 @@
 package com.company.oop.bank;
 
+import java.util.Objects;
+
 public class Account {
     private Integer accountNumber;
     private boolean status;
@@ -18,6 +20,19 @@ public class Account {
                 ", status=" + status +
                 ", resource'" + resource + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return status == account.status && Objects.equals(accountNumber, account.accountNumber) && Objects.equals(resource, account.resource);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountNumber, status, resource);
     }
 
     public Account(){
